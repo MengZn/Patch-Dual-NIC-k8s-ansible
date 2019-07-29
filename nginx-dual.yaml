@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dual
+  labels:
+    app: nginx-dual
+    interface: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-dual
+  template:
+    metadata:
+      labels:
+        app: nginx-dual
+    spec:
+      containers:
+      - name: nginx-dual
+        image: quay.io/mengzn/backend
+        ports:
+        - containerPort: 80
